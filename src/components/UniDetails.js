@@ -23,7 +23,7 @@ const UniDetails = () => {
             }
             setObj(result)
         });
-    })
+    },[country])
 
     //to get the desired colleges from the list of colleges provided by api
     const college = obj.filter(data => data.name === university);
@@ -35,7 +35,7 @@ const UniDetails = () => {
     <Navbar />
 
         <div className='container my-5'>
-        <Link to={"/"+country} className='btn mb-3' style={{background: "#91b3fa" , color: "black" , fontWeight:"500"}}>Explore more Universities in {country}</Link>
+        <Link to={"/"+country} className='btn mb-3' style={{background: "#91b3fa" , color: "black" , fontWeight:"500"}}>Go back and Explore more Universities in {country}</Link>
             {(college.length > 0)
                 ?
                 (<>
