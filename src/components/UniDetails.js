@@ -23,7 +23,7 @@ const UniDetails = () => {
             }
             setObj(result)
         });
-    }, [])
+    })
 
     //to get the desired colleges from the list of colleges provided by api
     const college = obj.filter(data => data.name === university);

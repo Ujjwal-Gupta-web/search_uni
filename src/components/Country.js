@@ -35,7 +35,7 @@ const Country = () => {
     //to call the api once the page is renderred
     useEffect(() => {
         getData(country);
-    }, [])
+    })
 
     document.title = `${country} - SearchUni`;
 
