@@ -7,8 +7,9 @@ const UniDetails = () => {
     const [obj, setObj] = useState([]);
     let { country, university } = useParams();
 
+    // api to get the data according to the country
     async function getData(country) {
-    
+
         const final = await fetch("/search.json", {
             method: "GET",
             headers: {
@@ -16,7 +17,7 @@ const UniDetails = () => {
             }
         });
         var result = await final.json();
-        result=result.filter(data=>data.country===country);
+        result = result.filter(data => data.country === country);
         if ((result.length % 2) === 0) {
             result = result.slice(0, (result.length / 2));
         }
@@ -27,10 +28,10 @@ const UniDetails = () => {
 
     }
 
-    // to fetch data from api , only once
+    // to fetch data from api
     useEffect(() => {
-       getData(country);
-    },[country])
+        getData(country);
+    }, [country])
 
     //to get the desired colleges from the list of colleges provided by api
     const college = obj.filter(data => data.name === university);
@@ -39,10 +40,10 @@ const UniDetails = () => {
 
     return (<>
 
-    <Navbar />
+        <Navbar />
 
         <div className='container my-5'>
-        <Link to={"/"+country} className='btn mb-3' style={{background: "#91b3fa" , color: "black" , fontWeight:"500"}}>Go back and Explore more Universities in {country}</Link>
+            <Link to={"/" + country} className='btn mb-3' style={{ background: "#91b3fa", color: "black", fontWeight: "500" }}>Go back and Explore more Universities in {country}</Link>
             {(college.length > 0)
                 ?
                 (<>

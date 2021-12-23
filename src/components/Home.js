@@ -27,9 +27,9 @@ const Home = () => {
         </div>
 
         {/* Countries section */}
-        
-            <h4 className='my-3 mx-3'>Countries</h4>
-        
+
+        <h4 className='my-3 mx-3'>Countries</h4>
+
         <div className='container d-flex align-items-start justify-content-start flex-wrap mx-2' id="select-countries">
 
             <hr />

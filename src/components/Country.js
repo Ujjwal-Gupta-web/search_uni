@@ -39,7 +39,7 @@ const Country = () => {
 
     }
 
-    //to call the api once the page is renderred
+    //to call the api everytime page renders
     useEffect(() => {
         getData(country);
     },[country])
