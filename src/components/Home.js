@@ -33,7 +33,7 @@ const Home = () => {
         <div className='container d-flex align-items-start justify-content-start flex-wrap mx-2' id="select-countries">
 
             <hr />
-            {countries.map(data => <Link className='my-2 mx-2 p-3 text-decoration-none' style={{ outline: "none", border: "1px solid grey", background: "#91b3fa", color: "black", fontWeight: "500" }} to={data}>{data}</Link>)}
+            {countries.map(data => <Link key={data} className='my-2 mx-2 p-3 text-decoration-none' style={{ outline: "none", border: "1px solid grey", background: "#91b3fa", color: "black", fontWeight: "500" }} to={data}>{data}</Link>)}
         </div>
     </>
     )

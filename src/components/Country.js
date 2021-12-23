@@ -14,13 +14,20 @@ const Country = () => {
     async function getData(country) {
         setdata([]);
         setcontent(<>Loading...<hr /></>);
-        const final = await fetch(`http://universities.hipolabs.com/search?country=${country}`, {
+        // const final = await fetch(`http://universities.hipolabs.com/search?country=${country}`, {
+        //     method: "GET",
+        //     headers: {
+        //         'Content-type': 'application/json',
+        //     }
+        // });
+        const final = await fetch(`search.json`, {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
             }
         });
         var result = await final.json();
+        result=result.filter(data=>data.country===country);
         if ((result.length % 2) === 0) {
             result = result.slice(0, (result.length / 2));
         }

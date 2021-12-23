@@ -5,24 +5,31 @@ import Navbar from './Navbar';
 
 const UniDetails = () => {
     const [obj, setObj] = useState([]);
-    const { country, university } = useParams();
+    let { country, university } = useParams();
 
-    // to fetch data from api , only once
-    useEffect(() => {
-        fetch(`http://universities.hipolabs.com/search?country=${country}`, {
+    async function getData(country) {
+    
+        const final = await fetch("/search.json", {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',
             }
-        }).then(final => final.json()).then(result => {
-            if ((result.length % 2) === 0) {
-                result = result.slice(0, (result.length / 2));
-            }
-            else {
-                result = result.slice(0, (result.length / 2) + 1);
-            }
-            setObj(result)
         });
+        var result = await final.json();
+        result=result.filter(data=>data.country===country);
+        if ((result.length % 2) === 0) {
+            result = result.slice(0, (result.length / 2));
+        }
+        else {
+            result = result.slice(0, (result.length / 2) + 1);
+        }
+        setObj(result);
+
+    }
+
+    // to fetch data from api , only once
+    useEffect(() => {
+       getData(country);
     },[country])
 
     //to get the desired colleges from the list of colleges provided by api
